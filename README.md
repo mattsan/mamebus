@@ -1,6 +1,6 @@
 # Mamebus
 
-**TODO: Add description**
+[まめバス時刻表（オープンデータ）](http://www.city.noda.chiba.jp/shisei/johokoukai/opendata/1010030.html)
 
 ## Installation
 
