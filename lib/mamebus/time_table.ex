@@ -39,7 +39,7 @@ defmodule Mamebus.TimeTable do
   def response_to_list({:ok, body}) do
     body
     |> String.trim()
-    |> String.split("\r\n")
+    |> String.split(~r{\r\n|\r|\n})
     |> CSV.decode
     |> Enum.map(fn {:ok, row} -> row end)
   end
