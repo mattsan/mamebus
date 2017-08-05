@@ -35,10 +35,11 @@ config :mamebus,
     },
     %{
       desc: "中ルート（左回り）",
-      names: [
-        "1607_naka_hidarimawari.csv",
-        "1607_naka_migimawari.csv"
-      ]
+      name: "1607_naka_hidarimawari.csv"
+    },
+    %{
+      desc: "中ルート（右回り）",
+      name: "1607_naka_migimawari.csv"
     },
     %{
       desc: "南ルート（左回り）",
