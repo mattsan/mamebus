@@ -10,6 +10,13 @@ defmodule Mamebus.TimeTable do
     %{desc: desc, table: fetch_table(filename)}
   end
 
+  def fetch(%{desc: desc, names: filenames}) do
+    %{
+      desc: desc,
+      tables: Enum.map(filenames, &fetch_table/1)
+    }
+  end
+
   def fetch_table(filename) do
     "#{@url}#{filename}"
     |> HTTPoison.get()
