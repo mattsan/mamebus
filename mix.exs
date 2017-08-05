@@ -7,7 +7,8 @@ defmodule Mamebus.Mixfile do
       version: "0.1.0",
       elixir: "~> 1.5",
       start_permanent: Mix.env == :prod,
-      deps: deps()
+      deps: deps(),
+      escript: escript_config()
     ]
   end
 
@@ -24,5 +25,9 @@ defmodule Mamebus.Mixfile do
       httpoison: "~> 0.12",
       csv: "~> 2.0"
     ]
+  end
+
+  def escript_config do
+    [main_module: Mamebus.CLI]
   end
 end
