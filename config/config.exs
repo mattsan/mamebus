@@ -1,30 +1,22 @@
-# This file is responsible for configuring your application
-# and its dependencies with the aid of the Mix.Config module.
 use Mix.Config
 
-# This configuration is loaded before any dependency and is restricted
-# to this project. If another project depends on this project, this
-# file won't be loaded nor affect the parent project. For this reason,
-# if you want to provide default values for your application for
-# 3rd-party users, it should be done in your "mix.exs" file.
-
-# You can configure your application as:
-#
-#     config :mamebus, key: :value
-#
-# and access this configuration in your application as:
-#
-#     Application.get_env(:mamebus, :key)
-#
-# You can also configure a 3rd-party app:
-#
-#     config :logger, level: :info
-#
-
-# It is also possible to import configuration files, relative to this
-# directory. For example, you can emulate configuration per environment
-# by uncommenting the line below and defining dev.exs, test.exs and such.
-# Configuration from the imported file will override the ones defined
-# here (which is why it is important to import them last).
-#
-#     import_config "#{Mix.env}.exs"
+config :mamebus,
+  url: "http://www.city.noda.chiba.jp/_res/projects/default_project/_page_/001/010/030/",
+  files: [
+    %{desc: "関宿城ルート（関宿中央ターミナル行）", name: "1607_sekiyadojo_sekiyadotyuuou-terminal_iki.csv"},
+    %{desc: "関宿城ルート（関宿城博物館行）", name: "1607_sekiyadojo_sekiyadojouhakubutukan_iki2.csv"},
+    %{desc: "北ルート（市役所行）", name: "1607_kita_shiyakusyo_iki_heijitu.csv"},
+    %{desc: "北ルート（市役所行）", name: "1607_kita_shiyakusyo_iki_donitisyukujitu.csv"},
+    %{desc: "北ルート（関宿中央ターミナル行）", name: "1607_kita_sekiyadotyuuou-terminal_iki_heijitu.csv"},
+    %{desc: "北ルート（関宿中央ターミナル行）", name: "1607_kita_sekiyadotyuuou-terminal_iki_donitisyukujitu.csv"},
+    %{desc: "新北ルート（市役所行）", name: "1607_shinkita_shiyakusyo_iki.csv"},
+    %{desc: "新北ルート（いちいのホール行）", name: "1607_shinkita_itiino-hall_iki.csv"},
+    %{desc: "中ルート（左回り）", name: "1607_naka_hidarimawari.csv"},
+    %{desc: "中ルート（右回り）", name: "1607_naka_migimawari.csv"},
+    %{desc: "南ルート（左回り）", name: "1607_minami_hidarimawari_heijitu.csv"},
+    %{desc: "南ルート（左回り）", name: "1607_minami_hidarimawari_donitisyukujitu.csv"},
+    %{desc: "南ルート（右回り）", name: "1607_minami_migimawari_heijitu.csv"},
+    %{desc: "南ルート（右回り）", name: "1607_minami_migimawari_donitisyukujitu.csv"},
+    %{desc: "新南ルート（みずき4丁目公園行）", name: "1607_shinminami_mizukiyontyoumekouen_iki.csv"},
+    %{desc: "新南ルート（大利根温泉行）", name: "1607_shinminami_ootoneonsen_iki.csv"}
+  ]
