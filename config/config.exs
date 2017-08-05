@@ -2,7 +2,7 @@ use Mix.Config
 
 config :mamebus,
   url: "http://www.city.noda.chiba.jp/_res/projects/default_project/_page_/001/010/030/",
-  files: [
+  routes: [
     %{
       desc: "関宿城ルート（関宿中央ターミナル行）",
       name: "1607_sekiyadojo_sekiyadotyuuou-terminal_iki.csv"

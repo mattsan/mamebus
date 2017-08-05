@@ -1,9 +1,9 @@
 defmodule Mamebus.TimeTable do
   @url Application.get_env(:mamebus, :url)
-  @files Application.get_env(:mamebus, :files)
+  @routes Application.get_env(:mamebus, :routes)
 
   def fetch_all do
-    @files |> Enum.map(&fetch/1)
+    @routes |> Enum.map(&fetch/1)
   end
 
   def fetch(%{desc: desc, name: filename}) do
