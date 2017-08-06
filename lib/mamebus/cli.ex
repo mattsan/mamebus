@@ -8,23 +8,23 @@ defmodule Mamebus.CLI do
   def parse_args(argv) do
     parse = OptionParser.parse(argv,
       switches: [
-        routes: :boolean,
+        show_routes: :boolean,
         help: :boolean
       ],
       aliases: [
-        r: :routes,
+        s: :show_routes,
         h: :help
       ]
     )
 
     case parse do
-    {[routes: true], _, _} -> :routes
+    {[show_routes: true], _, _} -> :show_routes
     {[help: true], _, _} -> :help
     _ -> :help
     end
   end
 
-  def process(:routes) do
+  def process(:show_routes) do
     Mamebus.TimeTable.route_names()
     |> Enum.reduce(1, fn (name, n) ->
       index = String.pad_leading(Integer.to_string(n), 2)
@@ -35,7 +35,7 @@ defmodule Mamebus.CLI do
 
   def process(:help) do
     IO.puts("""
-        --routes, -r   show all routes
+        --show-routes, -s   show all routes
         --help, -h     show usage help (this text)
     """)
   end
