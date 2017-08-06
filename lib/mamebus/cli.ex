@@ -8,20 +8,30 @@ defmodule Mamebus.CLI do
   def parse_args(argv) do
     parse = OptionParser.parse(argv,
       switches: [
+        route: :integer,
         show_routes: :boolean,
         help: :boolean
       ],
       aliases: [
+        r: :route,
         s: :show_routes,
         h: :help
       ]
     )
 
     case parse do
-    {[show_routes: true], _, _} -> :show_routes
+    {[route: index], [], []} -> {:route, index}
+    {[show_routes: true], [], []} -> :show_routes
     {[help: true], _, _} -> :help
     _ -> :help
     end
+  end
+
+  def process({:route, index}) do
+    Mamebus.TimeTable.routes()
+    |> Enum.at(index - 1)
+    |> Mamebus.TimeTable.fetch
+    |> show_time_table
   end
 
   def process(:show_routes) do
@@ -35,8 +45,27 @@ defmodule Mamebus.CLI do
 
   def process(:help) do
     IO.puts("""
-        --show-routes, -s   show all routes
-        --help, -h     show usage help (this text)
+        --route, -r       show time table
+        --show-routes, -s show all routes
+        --help, -h        show usage help (this text)
     """)
+  end
+
+  def show_time_table(%{desc: desc, table: table}) do
+    IO.puts(desc)
+    IO.puts("")
+    Enum.each(table, fn row ->
+      IO.puts("| #{Enum.join(row, " | ")} |")
+    end)
+  end
+
+  def show_time_table(%{desc: desc, tables: tables}) do
+    IO.puts(desc)
+    Enum.each(tables, fn table ->
+      IO.puts("")
+      Enum.each(table, fn row ->
+        IO.puts("| #{Enum.join(row, " | ")} |")
+      end)
+    end)
   end
 end

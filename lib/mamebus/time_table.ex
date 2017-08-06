@@ -2,6 +2,10 @@ defmodule Mamebus.TimeTable do
   @url Application.get_env(:mamebus, :url)
   @routes Application.get_env(:mamebus, :routes)
 
+  def routes do
+    @routes
+  end
+
   def route_names do
     @routes |> Enum.map(fn %{desc: desc} -> desc end)
   end
