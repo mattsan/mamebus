@@ -53,24 +53,21 @@ defmodule Mamebus.CLI do
 
   def show_time_table(%{desc: desc, table: table}) do
     IO.puts(desc)
-    IO.puts("")
-    table |> rule() |> Enum.each(fn row ->
-      IO.puts("| #{Enum.join(row, " | ")} |")
-    end)
+    put_table(table)
   end
 
   def show_time_table(%{desc: desc, tables: tables}) do
     IO.puts(desc)
-    Enum.each(tables, fn table ->
-      IO.puts("")
-      table |> rule() |> Enum.each(fn row ->
-        IO.puts("| #{Enum.join(row, " | ")} |")
-      end)
-    end)
+    Enum.each(tables, &put_table/1)
   end
 
   defp rule(table) do
     column_count = table |> List.first() |> Enum.count()
     table |> List.insert_at(1, List.duplicate("---", column_count))
+  end
+
+  defp put_table(table) do
+    IO.puts("")
+    table |> rule() |> Enum.each(fn row -> IO.puts("| #{Enum.join(row, " | ")} |") end)
   end
 end
